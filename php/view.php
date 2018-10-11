@@ -11,9 +11,9 @@ $all_data = $mydata->search($keyword, $location, $category);
 <h3> Search criteria: </h3>
 <ul> 
   </li>
-  <li> Keyword:  <?php echo $mydata->get_keyword(); ?>  </li>
-  <li> Location: <?php echo $mydata->get_location(); ?>  </li>
-  <li> Category: <?php echo $mydata->get_category(); ?>  </li>
+  <li> Keyword:  <?php echo $keyword; ?>  </li>
+  <li> Location: <?php echo $location; ?>  </li>
+  <li> Category: <?php echo $category; ?>  </li>
 </ul>
 
 <table class="list" style="width:100%">

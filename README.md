@@ -52,3 +52,32 @@ INSERT INTO `custom_events` (`name`, `description`, `start`, `finish`, `location
 ('Improve your swimming experience', 'Swimming can be energy consuming if not done properly, you will learn how to swim for hours without any effort', '2022-07-08 11:00:00', '2022-07-08 12:00:00', 'New York', 'Sport', FALSE),
 ('L.A. music festival', 'The most underground music festival in California', '2022-08-15 16:00:00', '2022-08-16 01:00:00', 'Los Angeles', 'Music', FALSE),
 ('Horse riding', 'A horse excursion in a beautiful western-like area', '2022-10-25 14:00:00', '2022-10-25 17:00:00', 'Houston', 'Sport', TRUE);
+
+
+####
+$param = "%{$_POST['user']}%";
+$stmt = $db->prepare("SELECT id,Username FROM users WHERE Username LIKE ?");
+$stmt->bind_param("s", $param);
+$stmt->execute();
+$stmt->bind_result($id,$username);
+
+while ($stmt->fetch()) {
+  echo "Id: {$id}, Username: {$username}";
+}
+
+$param = "%{$_POST['user']}%";
+$stmt = $db->prepare("SELECT id,Username FROM users WHERE Username LIKE ?");
+$stmt->bind_param("s", $param);
+$stmt->execute();
+
+$result = $stmt->get_result();
+while ($row = $result->fetch_array(MYSQLI_NUM)) {
+  foreach ($row as $r) {
+    print "$r ";
+  }
+  print "\n";
+}
+$stmt = $db->prepare("SELECT id,Username FROM users WHERE Username LIKE CONCAT('%',?,'%') ");
+$stmt->bind_param("s", $param);
+$stmt->execute();
+
