@@ -1,0 +1,10 @@
+
+<?php 
+$keyword  = $_GET['keyword'];
+$location = (isset($_GET['location']))?$_GET['location']:"";
+$category = (isset($_GET['category']))?$_GET['category']:"";
+
+require_once('php/db_functions.php');
+include 'php/view.php';
+
+?>
