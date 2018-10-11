@@ -4,7 +4,7 @@
 
 
 <?php 
-$mydata = new MyData();
+$mydata = new MyData($database);
 $all_data = $mydata->search($keyword, $location, $category);
 ?>
 

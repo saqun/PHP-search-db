@@ -2,14 +2,16 @@
 require_once('db_credentials.php');
 require_once('utilities.php');
 
+$database = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+
 class MyData {
 	private $database;
 	private $keyword;
 	private $location;
 	private $category;
 	
-	function __construct() {
-		$this->database = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+	function __construct($database) {
+		$this->database = $database;
 	}
 	function build_search_info($key, $location, $category) {
 		$this->keyword = empty_str($key)?"":h($key);
